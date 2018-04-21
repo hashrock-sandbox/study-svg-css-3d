@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      height: 400px;
+      width: 400px;
+      background: black;
+      perspective: 400px;
+      perspective-origin: 50% 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wall {
+      animation: myRotation 10000ms linear infinite;
+      border: 4px solid white;
+      position: absolute;
+      top: 0px;
+      height: 400px;
+      width: 400px;
+      transform-style: preserve-3d;
+      transform: translateZ(-100px) rotateY(-20deg);
+      color: white;
+      font-size: 2rem;
+    }
+
+    @keyframes myRotation {
+      0% {
+        transform: translateZ(-100px) rotateY(0deg);
+      }
+      100% {
+        transform: translateZ(-100px) rotateY(360deg);
+      }
+    }
+
+    @keyframes changeBorder {
+      0% {
+        stroke-width: 0px;
+        /* stroke: 0px solid white; */
+        /* transform: translateZ(-100px) rotateY(0deg); */
+      }
+      100% {
+        stroke-width: 100px;
+        /* stroke: 100px solid white; */
+        /* transform: translateZ(-100px) rotateY(360deg); */
+      }
+    }
+
+    circle {
+      animation: changeBorder 1000ms infinite;
+      stroke: white;
+    }
+
+    circle:hover {
+      stroke: red;
+
+    }
+
+    svg {
+      height: 400px;
+      width: 400px;
+    }
+
+    text {
+      fill: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="wall">
+      テキストだよー
+      <svg>
+        <circle cx=100 cy=100 r=100></circle>
+        <text x=50 y=300>svgもいけるんかーい</text>
+      </svg>
+    </div>
+  </div>
+  <!-- <div class="world">
+    <div class="wall"></div>
+    <div class="wall2"></div>
+  </div> -->
+
+  <script>
+    document.querySelector("circle").addEventListener("pointermove", (ev) => {
+      console.log(ev.clientX)
+    })
+
+  </script>
+
+</body>
+
+</html>
