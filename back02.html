@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrapper {
+
+      height: 400px;
+      width: 400px;
+      background: black;
+      perspective: 400px;
+      perspective-origin: 50% 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .wall {
+      position: absolute;
+      top: 0px;
+      height: 400px;
+      width: 400px;
+      transform-style: preserve-3d;
+      color: white;
+      font-size: 2rem;
+    }
+
+    .wall--a {
+      transform: translateZ(-100px) rotateY(-30deg);
+      animation: changeBorder 1000ms linear infinite;
+
+    }
+
+    .wall--b {
+      transform: translateZ(-100px) rotateY(30deg);
+      animation: changeBorderReverse 1000ms linear infinite;
+    }
+
+    @keyframes myRotation {
+      0% {
+        transform: translateZ(-100px) rotateY(0deg);
+      }
+      100% {
+        transform: translateZ(-100px) rotateY(360deg);
+      }
+    }
+
+    @keyframes changeBorder {
+      0% {
+        /* stroke-width: 0px; */
+        /* stroke: 0px solid white; */
+        /* transform: translateZ(-100px) rotateY(0deg); */
+        stroke-dashoffset: 0;
+      }
+      100% {
+        /* stroke-width: 10px; */
+        /* stroke: 100px solid white; */
+        /* transform: translateZ(-100px) rotateY(360deg); */
+        stroke-dashoffset: 40;
+      }
+    }
+
+    @keyframes changeBorderReverse {
+      0% {
+        /* stroke-width: 0px; */
+        /* stroke: 0px solid white; */
+        /* transform: translateZ(-100px) rotateY(0deg); */
+        stroke-dashoffset: 40;
+      }
+      100% {
+        /* stroke-width: 10px; */
+        /* stroke: 100px solid white; */
+        /* transform: translateZ(-100px) rotateY(360deg); */
+        stroke-dashoffset: 0;
+      }
+    }
+
+    circle {
+      fill: none;
+      stroke: white;
+      stroke-opacity: 0.2;
+      stroke-dasharray: 10;
+      stroke-width: 30px;
+    }
+
+    svg {
+      height: 400px;
+      width: 400px;
+    }
+
+    text {
+      fill: white;
+    }
+
+    @keyframes textBlink {
+      0% {
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .logo {
+      animation: textBlink 3s infinite;
+      color: white;
+      font-size: 0.8rem;
+      text-align: center;
+      line-height: 400px;
+      font-weight: 900;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="logo">
+      SVG is watching you
+    </div>
+    <div class="wall wall--a">
+      <svg>
+        <circle cx=200 cy=200 r=180></circle>
+      </svg>
+    </div>
+    <div class="wall wall--b">
+      <svg>
+        <circle cx=200 cy=200 r=180></circle>
+      </svg>
+    </div>
+    <div class="wall wall--a" style="transform: translateZ(-100px) rotateY(-60deg);">
+      <svg>
+        <circle cx=200 cy=200 r=180></circle>
+      </svg>
+    </div>
+    <div class="wall wall--b" style="transform: translateZ(-100px) rotateY(60deg);">
+      <svg>
+        <circle cx=200 cy=200 r=180></circle>
+      </svg>
+    </div>
+  </div>
+  <!-- <div class="world">
+    <div class="wall"></div>
+    <div class="wall2"></div>
+  </div> -->
+
+  <script>
+    document.querySelector("circle").addEventListener("pointermove", (ev) => {
+      console.log(ev.clientX)
+    })
+
+  </script>
+
+</body>
+
+</html>

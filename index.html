@@ -7,151 +7,138 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    .wrapper {
-      height: 400px;
-      width: 400px;
+    html,
+    body {
+      height: 100vh;
+
+    }
+
+    body {
+      font-family: "HG創英角ﾎﾟｯﾌﾟ体";
+      perspective: 300px;
       background: black;
-      perspective: 400px;
-      perspective-origin: 50% 50%;
-      position: relative;
-      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
-    .wall {
-      position: absolute;
-      top: 0px;
-      height: 400px;
-      width: 400px;
+    text {
+      stroke: black;
+    }
+
+    path {
+      fill: none;
+    }
+
+    svg {
       transform-style: preserve-3d;
-      color: white;
-      font-size: 2rem;
+      position: absolute;
+      animation: filter-animation 1000ms infinite;
     }
 
-    .wall--a {
-      transform: translateZ(-100px) rotateY(-30deg);
-      animation: changeBorder 1000ms linear infinite;
+    .t1 {
+      transform: translateZ(-10px) rotateY(15deg);
+    }
+
+    .t1--shadow {
+      transform: translateZ(-10px) rotateY(15deg) rotateX(80deg);
 
     }
 
-    .wall--b {
-      transform: translateZ(-100px) rotateY(30deg);
-      animation: changeBorderReverse 1000ms linear infinite;
+    .t2 {
+      transform: translateZ(-10px) rotateY(-25deg);
+    }
+
+    .ett {
+      font-size: 5rem;
+    }
+
+    .ett--shadow {
+      stroke: none;
+    }
+
+    @keyframes filter-animation {
+      0% {
+        filter: hue-rotate(0deg);
+      }
+
+      50% {
+        filter: hue-rotate(100deg);
+      }
+
+      100% {
+        filter: hue-rotate(0deg);
+      }
     }
 
     @keyframes myRotation {
       0% {
-        transform: translateZ(-100px) rotateY(0deg);
+        transform: translateZ(-100px) rotateY(0deg) rotateX(0deg);
       }
       100% {
-        transform: translateZ(-100px) rotateY(360deg);
+        transform: translateZ(-100px) rotateY(360deg) rotateX(360deg);
       }
     }
 
-    @keyframes changeBorder {
-      0% {
-        /* stroke-width: 0px; */
-        /* stroke: 0px solid white; */
-        /* transform: translateZ(-100px) rotateY(0deg); */
-        stroke-dashoffset: 0;
-      }
-      100% {
-        /* stroke-width: 10px; */
-        /* stroke: 100px solid white; */
-        /* transform: translateZ(-100px) rotateY(360deg); */
-        stroke-dashoffset: 40;
-      }
-    }
-
-    @keyframes changeBorderReverse {
-      0% {
-        /* stroke-width: 0px; */
-        /* stroke: 0px solid white; */
-        /* transform: translateZ(-100px) rotateY(0deg); */
-        stroke-dashoffset: 40;
-      }
-      100% {
-        /* stroke-width: 10px; */
-        /* stroke: 100px solid white; */
-        /* transform: translateZ(-100px) rotateY(360deg); */
-        stroke-dashoffset: 0;
-      }
-    }
-
-    circle {
-      fill: none;
-      stroke: white;
-      stroke-opacity: 0.2;
-      stroke-dasharray: 10;
-      stroke-width: 30px;
-    }
-
-    svg {
-      height: 400px;
-      width: 400px;
-    }
-
-    text {
-      fill: white;
-    }
-
-    @keyframes textBlink {
-      0% {
-        opacity: 0;
-      }
-      50% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
-    }
-
-    .logo {
-      animation: textBlink 3s infinite;
-      color: white;
-      font-size: 0.8rem;
-      text-align: center;
-      line-height: 400px;
-      font-weight: 900;
+    .wrapper {
+      height: 300px;
+      width: 1000px;
+      transform-style: preserve-3d;
+      animation: myRotation 10s linear infinite;
     }
   </style>
 </head>
 
 <body>
+  <audio src="yugata_senaka.mp3" autoplay loop></audio>
+
   <div class="wrapper">
-    <div class="logo">
-      SVG is watching you
-    </div>
-    <div class="wall wall--a">
-      <svg>
-        <circle cx=200 cy=200 r=180></circle>
-      </svg>
-    </div>
-    <div class="wall wall--b">
-      <svg>
-        <circle cx=200 cy=200 r=180></circle>
-      </svg>
-    </div>
-    <div class="wall wall--a" style="transform: translateZ(-100px) rotateY(-60deg);">
-      <svg>
-        <circle cx=200 cy=200 r=180></circle>
-      </svg>
-    </div>
-    <div class="wall wall--b" style="transform: translateZ(-100px) rotateY(60deg);">
-      <svg>
-        <circle cx=200 cy=200 r=180></circle>
-      </svg>
-    </div>
+    <svg viewBox="0 0 500 200" class="t1 t1--shadow">
+      <text fill="url(#g0)" x=60 y=100 class="ett ett--shadow">Chill-out</text>
+    </svg>
+    <svg viewBox="0 0 500 200" class="t1">
+      <text fill="url(#g0)" x=60 y=100 class="ett">Chill-out</text>
+    </svg>
+
+    <svg viewBox="0 0 400 200" class="t2">
+      <defs>
+        <linearGradient id="g0">
+          <stop offset="0.0" stop-color="orange" />
+          <stop offset="0.2" stop-color="yellow" />
+          <stop offset="0.4" stop-color="green" />
+          <stop offset="0.6" stop-color="cyan" />
+          <stop offset="0.8" stop-color="blue" />
+          <stop offset="1" stop-color="violet" />
+        </linearGradient>
+        <linearGradient id="g1" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0.0" stop-color="white" />
+          <stop offset="1" stop-color="gray" />
+        </linearGradient>
+      </defs>
+      <path id="curve" d="M10 80 Q 100 10, 150 80 T 300 80" />
+      <text fill=url(#g0)>
+        <textPath alignment-baseline="top" xlink:href="#curve">
+          SVG最高！SVG最高！SVG最高！SVG最高！SVG最高！SVG最高！
+        </textPath>
+      </text>
+    </svg>
+
   </div>
-  <!-- <div class="world">
-    <div class="wall"></div>
-    <div class="wall2"></div>
-  </div> -->
 
   <script>
-    document.querySelector("circle").addEventListener("pointermove", (ev) => {
-      console.log(ev.clientX)
-    })
+    let counter = 0
+    function d2y(cnt, offset) {
+      return Math.cos((cnt + offset) * 0.017453)
+    }
+
+    setInterval(() => {
+      counter += 2
+
+      document.querySelector("#curve").setAttribute(
+        "d",
+        `M10 ${d2y(counter, 90) * 50 + 50} Q 100 ${d2y(counter, 180) * 50 + 50}, 150 ${d2y(counter, 270) * 30 + 50} T 300 ${d2y(counter, 0) * 30 + 50}`
+      )
+    }, 10)
 
   </script>
 
